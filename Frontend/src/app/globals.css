@@ -1,0 +1,104 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+
+  --color-teal-50:  #f0fdfa;
+  --color-teal-100: #ccfbf1;
+  --color-teal-200: #99f6e4;
+  --color-teal-300: #5eead4;
+  --color-teal-400: #2dd4bf;
+  --color-teal-500: #14b8a6;
+  --color-teal-600: #0d9488;
+  --color-teal-700: #0f766e;
+  --color-teal-800: #115e59;
+  --color-teal-900: #134e4a;
+
+  --animate-fade-up: fadeUp 0.4s ease forwards;
+  --animate-fade-in: fadeIn 0.3s ease forwards;
+  --animate-shimmer: shimmer 1.5s infinite;
+
+  @keyframes fadeUp {
+    0%   { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position:  200% 0; }
+  }
+}
+
+@layer base {
+  :root {
+    /* Full sidebar width — desktop (md+) */
+    --sidebar-w: 220px;
+
+    /* Icon-rail sidebar width — tablet (sm..md).
+       Must match the `sm:w-14` on the aside (Tailwind w-14 = 3.5rem = 56px) */
+    --sidebar-w-sm: 3.5rem;
+
+    /* Mobile bottom tab bar height — padding added below content so nothing
+       hides behind the bar. Includes extra for iOS home indicator. */
+    --tab-bar-h: 4.5rem;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background-color: #fafaf9;
+    background-image: radial-gradient(circle, #d6d3cd 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-attachment: fixed;
+  }
+
+  ::-webkit-scrollbar       { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+}
+
+@layer utilities {
+  .card {
+    @apply bg-white rounded-2xl border border-stone-200/80 shadow-sm;
+  }
+  .stagger-1 { animation-delay: 0.05s; opacity: 0; animation-fill-mode: forwards; }
+  .stagger-2 { animation-delay: 0.10s; opacity: 0; animation-fill-mode: forwards; }
+  .stagger-3 { animation-delay: 0.15s; opacity: 0; animation-fill-mode: forwards; }
+  .stagger-4 { animation-delay: 0.20s; opacity: 0; animation-fill-mode: forwards; }
+  .stagger-5 { animation-delay: 0.25s; opacity: 0; animation-fill-mode: forwards; }
+
+  /*
+   * .page-shell
+   * Apply to the flex-1 content wrapper in every page (the div that previously
+   * had inline style={{ marginLeft: 'var(--sidebar-w)' }}).
+   *
+   * Breakpoints:
+   *   mobile  (< 640px):  no left margin; bottom padding for the tab bar
+   *   tablet  (640–767px): left margin = icon-rail width (3.5rem / 56px)
+   *   desktop (768px+):   left margin = full sidebar (220px); no bottom pad
+   */
+  .page-shell {
+    /* mobile */
+    margin-left: 0;
+    padding-bottom: var(--tab-bar-h);
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .page-shell {
+      margin-left: var(--sidebar-w-sm);
+      padding-bottom: 0;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .page-shell {
+      margin-left: var(--sidebar-w);
+    }
+  }
+}
