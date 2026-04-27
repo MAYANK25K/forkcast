@@ -13,4 +13,4 @@ RUN composer install --no-dev --optimize-autoloader
 
 # ❌ REMOVE THIS LINE: RUN cp .env.example .env
 
-CMD php artisan migrate:fresh --force && php artisan db:seed --force && php artisan serve --host=0.0.0.0 --port=$PORT
+CMD php artisan key:generate --force && php artisan migrate:fresh --force && php artisan db:seed --force && php artisan serve --host=0.0.0.0 --port=$PORT
