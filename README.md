@@ -4,6 +4,8 @@
 
 🚀 **Live Demo:** [https://forkcast-xi.vercel.app/](https://forkcast-xi.vercel.app/)
 
+> **Note:** The backend and database are hosted on Render.com (free tier), which may take around a minute to load data on the frontend for the first time.
+
 ---
 
 ## Repository Structure
