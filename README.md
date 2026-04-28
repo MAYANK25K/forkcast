@@ -2,6 +2,8 @@
 
 > A full-stack analytics dashboard for restaurant operators. Track revenue, order volume, average order value, and peak-hour patterns across an entire fleet or for a single venue — on any device.
 
+🚀 **Live Demo:** [https://forkcast-xi.vercel.app/](https://forkcast-xi.vercel.app/)
+
 ---
 
 ## Repository Structure
